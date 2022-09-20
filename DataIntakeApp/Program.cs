@@ -14,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 if (!builder.Environment.IsDevelopment())
 {
-    var keyVaultEndpoint = new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/");
+    var keyVaultEndpoint = new Uri($"https://kv-jsp-free-trial.vault.azure.net/");
     builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
 }
 builder.Services.RegisterCoreDependency();
