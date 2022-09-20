@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 if (!builder.Environment.IsDevelopment())
 {
     var keyVaultEndpoint = new Uri($"https://{builder.Configuration["KeyVaultName"]}.vault.azure.net/");
-    builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "31ab9f86-3b22-4964-83e6-e8ff1075ca98" }));
+    builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
 }
 builder.Services.RegisterCoreDependency();
 builder.Services.RegisterPersistenceDependency(builder.Configuration);
