@@ -21,8 +21,8 @@ namespace Core.Features.Commands.UploadFile
         private readonly IConfiguration configuration;
         private readonly IRepository<Batch> repository;
         private readonly IMapper mapper;
-        private readonly ILogger logger;
-        public UploadFileCommandhandler(IConfiguration configuration, IRepository<Batch> repository, IMapper mapper, ILogger logger)
+        private readonly ILogger<UploadFileCommandhandler> logger;
+        public UploadFileCommandhandler(IConfiguration configuration, IRepository<Batch> repository, IMapper mapper, ILogger<UploadFileCommandhandler> logger)
         {
             this.configuration = configuration;
             this.repository = repository;
