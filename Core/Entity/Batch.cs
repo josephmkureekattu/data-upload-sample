@@ -10,6 +10,6 @@ namespace Core.Entity
     {
         public Guid BatchIdentifier { get; set; }
 
-        public ICollection<File> files { get; set; }
+        public virtual ICollection<File> files { get; set; }
     }
 }

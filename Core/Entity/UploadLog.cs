@@ -12,6 +12,6 @@ namespace Core.Entity
 
         public string Message { get; set; }
 
-        public File file { get; set; }  
+        public virtual File file { get; set; }  
     }
 }

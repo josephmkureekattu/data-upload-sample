@@ -16,6 +16,6 @@ namespace Core.Entity
 
         public virtual Batch Batch { get; set; }
 
-        public ICollection<UploadLog> uploadLogs { get; set; }
+        public virtual ICollection<UploadLog> uploadLogs { get; set; }
     }
 }
