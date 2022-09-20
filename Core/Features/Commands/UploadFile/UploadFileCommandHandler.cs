@@ -5,7 +5,6 @@ using Core.DTO;
 using Core.Entity;
 using MediatR;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using SharedKernal;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace Core.Features.Commands.UploadFile
             Batch b = new Batch { BatchIdentifier = Guid.NewGuid(), files = new Entity.File[] { f } };
 
             var resp =  await this.repository.AddAsync(b);
-           throw new Exception("insert done");
             return this.mapper.Map<BatchDTO>(resp);
         }
     }
