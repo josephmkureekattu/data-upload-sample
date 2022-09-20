@@ -32,6 +32,8 @@ namespace Core.Features.Commands.UploadFile
 
         public async Task<BatchDTO> Handle(UploadFileCommand request, CancellationToken cancellationToken)
         {
+
+            throw new Exception("exception from handler start");
             BlobClient blob = new BlobClient(new Uri(configuration["DataUploadBlob:Uri"] + "upload/" + request.Files[0].FileName), new AzureSasCredential(configuration["DataUploadBlob:SASToken"]));
             using (var stream = new MemoryStream())
             {
