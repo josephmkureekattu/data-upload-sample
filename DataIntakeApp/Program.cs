@@ -16,6 +16,7 @@ if (!builder.Environment.IsDevelopment())
 {
     var keyVaultEndpoint = new Uri($"https://kv-jsp-free-trial.vault.azure.net/");
     builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
+    builder.Services.AddApplicationInsightsTelemetry(options => { options.ConnectionString = "InstrumentationKey=4cb169fe-1800-4a23-846b-428b7c063c0b;IngestionEndpoint=https://centralus-2.in.applicationinsights.azure.com/;LiveEndpoint=https://centralus.livediagnostics.monitor.azure.com/"; });
 }
 builder.Services.RegisterCoreDependency();
 builder.Services.RegisterPersistenceDependency(builder.Configuration);
