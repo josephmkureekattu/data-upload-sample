@@ -1,8 +1,10 @@
-﻿using MediatR;
+﻿using Core.Mapper;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,7 @@ namespace Core.IOC
         {
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             services.AddMediatR(assemblies);
+            services.AddAutoMapper(typeof(ProfileMapper).GetTypeInfo().Assembly);
             return services;
         }
     }

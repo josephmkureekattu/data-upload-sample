@@ -1,5 +1,7 @@
-﻿using Azure;
+﻿using AutoMapper;
+using Azure;
 using Azure.Storage.Blobs;
+using Core.DTO;
 using Core.Entity;
 using MediatR;
 using Microsoft.Extensions.Configuration;
@@ -13,17 +15,19 @@ using System.Threading.Tasks;
 
 namespace Core.Features.Commands.UploadFile
 {
-    public class UploadFileCommandhandler : IRequestHandler<UploadFileCommand, Batch>
+    public class UploadFileCommandhandler : IRequestHandler<UploadFileCommand, BatchDTO>
     {
         private readonly IConfiguration configuration;
         private readonly IRepository<Batch> repository;
-        public UploadFileCommandhandler(IConfiguration configuration, IRepository<Batch> repository)
+        private readonly IMapper mapper;
+        public UploadFileCommandhandler(IConfiguration configuration, IRepository<Batch> repository, IMapper mapper)
         {
             this.configuration = configuration;
             this.repository = repository;
+            this.mapper = mapper;
         }
 
-        public async Task<Batch> Handle(UploadFileCommand request, CancellationToken cancellationToken)
+        public async Task<BatchDTO> Handle(UploadFileCommand request, CancellationToken cancellationToken)
         {
             BlobClient blob = new BlobClient(new Uri(configuration["DataUploadBlob:Uri"] + "upload/" + request.Files[0].FileName), new AzureSasCredential(configuration["DataUploadBlob:SASToken"]));
             using (var stream = new MemoryStream())
@@ -38,7 +42,9 @@ namespace Core.Features.Commands.UploadFile
 
             Batch b = new Batch { BatchIdentifier = Guid.NewGuid(), files = new Entity.File[] { f } };
 
-            return await this.repository.AddAsync(b);
+            var resp =  await this.repository.AddAsync(b);
+
+            return this.mapper.Map<BatchDTO>(resp);
         }
     }
 }
