@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "kubedeploytestapp-91b2"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "kubedeploytestapp-91b2"
+  template:
+    metadata:
+      labels:
+        app: "kubedeploytestapp-91b2"
+    spec:
+      containers:
+        - name: "kubedeploytestapp-91b2"
+          image: "jspcontainerregistry.azurecr.io/kubedeploytestapp"
+          ports:
+          - containerPort: 443
