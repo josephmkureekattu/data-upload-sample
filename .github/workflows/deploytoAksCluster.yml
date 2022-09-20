@@ -14,7 +14,7 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-        docker build "$GITHUB_WORKSPACE/DataIntakeApp" -f  "DataIntakeApp/Dockerfile" -t jspcontainerregistry.azurecr.io/kubedeploytestapp:${{ github.sha }} --label dockerfile-path=DataIntakeApp/Dockerfile
+        docker build "$GITHUB_WORKSPACE" -f  "DataIntakeApp/Dockerfile" -t jspcontainerregistry.azurecr.io/kubedeploytestapp:${{ github.sha }} --label dockerfile-path=DataIntakeApp/Dockerfile
         docker push jspcontainerregistry.azurecr.io/kubedeploytestapp:${{ github.sha }}
     
     - uses: azure/k8s-set-context@v1
