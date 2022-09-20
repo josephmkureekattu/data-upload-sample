@@ -46,7 +46,7 @@ namespace Core.Features.Commands.UploadFile
             Batch b = new Batch { BatchIdentifier = Guid.NewGuid(), files = new Entity.File[] { f } };
 
             var resp =  await this.repository.AddAsync(b);
-            this.logger.LogInformation("insert done");
+            this.logger.LogError("insert done");
             return this.mapper.Map<BatchDTO>(resp);
         }
     }
