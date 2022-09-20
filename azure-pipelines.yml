@@ -35,5 +35,6 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
+        arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
         tags: |
           $(tag)
