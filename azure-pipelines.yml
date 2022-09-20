@@ -14,7 +14,7 @@ variables:
   imageRepository: 'datauploadsample'
   containerRegistry: 'jspcontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/DataIntakeApp/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tag: 'latest'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
