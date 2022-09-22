@@ -24,7 +24,7 @@ namespace data_processing_fn_app
             .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
             .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
             builder.ConfigurationBuilder.AddEnvironmentVariables();
-            //builder.ConfigurationBuilder.AddAzureKeyVault(new Uri("https://keyvaultjsptest.vault.azure.net/"), new DefaultAzureCredential());
+            builder.ConfigurationBuilder.AddAzureKeyVault(new Uri("https://keyvaultjsptest.vault.azure.net/"), new DefaultAzureCredential());
             base.ConfigureAppConfiguration(builder);
         }
 
