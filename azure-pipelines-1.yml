@@ -11,7 +11,7 @@ variables:
   azureSubscription: '882a74fe-673f-41f0-bf52-865d61f50f16'
 
   # Function app name
-  functionAppName: 'sampledataprocessfnapp'
+  functionAppName: 'xyzfnapp'
 
   # Agent VM image name
   vmImageName: 'windows-2022'
