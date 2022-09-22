@@ -25,15 +25,19 @@ namespace Persistence.IOC
 
                   })); // will be created in web project root
 
+
+            var assembly = Assembly.GetExecutingAssembly();
+            serviceCollection
+              .AddMediatR(assembly);
+            serviceCollection.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
+        }
+        public static void ApplyMigration(this IServiceCollection serviceCollection)
+        {
             using (var scope = serviceCollection.BuildServiceProvider().CreateScope())
             {
                 var dataContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 dataContext.Database.Migrate();
             }
-            var assembly = Assembly.GetExecutingAssembly();
-            serviceCollection
-              .AddMediatR(assembly);
-            serviceCollection.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
         }
     }
 }

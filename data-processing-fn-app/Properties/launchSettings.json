@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "data_processing_fn_app": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7185",
+      "launchBrowser": false
+    }
+  }
+}

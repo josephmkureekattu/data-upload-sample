@@ -23,6 +23,7 @@ if (!builder.Environment.IsDevelopment())
 }
 builder.Services.RegisterCoreDependency();
 builder.Services.RegisterPersistenceDependency(builder.Configuration);
+builder.Services.ApplyMigration();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
