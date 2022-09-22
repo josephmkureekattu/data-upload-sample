@@ -17,7 +17,7 @@ variables:
   vmImageName: 'windows-2022'
 
   # Working Directory
-  workingDirectory: 'data-processing-fn-app'
+  workingDirectory: 'sampledataprocessfnapp'
 
 stages:
 - stage: Build
