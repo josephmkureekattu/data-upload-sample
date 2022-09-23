@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Entity;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,7 @@ namespace data_processing_fn_app.Activity
         {
             var command = "[dbo].[SP_Final_Insert]";
             appDbContext.Database.SetCommandTimeout(1800);//need more time than usual to execute calculation procedures.
-            appDbContext.Set<FinalData>().FromSqlRaw($"EXEC {command}");
+            appDbContext.Set<FinalTable>().FromSqlRaw($"EXEC {command}");
             return true;
         }
     }
