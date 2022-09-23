@@ -22,6 +22,7 @@ namespace data_processing_fn_app
             var fileresponsedata = await context.CallActivityAsync<byte[]>("Download_File", context.GetInput<ProcessStartMessage>().BlobUrl);
             List<ParsedYearDatacs> stagingData = await context.CallActivityAsync<List<ParsedYearDatacs>>("Extract_Rows", (fileresponsedata, "sdfsdf"));
             bool stagingInsertionStatus = await context.CallActivityAsync<bool>("Insert_Staging", stagingData);
+            bool finalStatus = await context.CallActivityAsync<bool>("Insert_Final", null);
 
             // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
             return outputs;

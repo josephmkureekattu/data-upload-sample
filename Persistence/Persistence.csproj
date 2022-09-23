@@ -23,4 +23,10 @@
     <ProjectReference Include="..\SharedKernal\SharedKernal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\sp_final_insert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
