@@ -50,7 +50,7 @@ namespace Core.Features.Commands.UploadFile
 
             client.DefaultRequestHeaders.Accept.Clear();
 
-            var stringTask = client.PostAsync(configuration["FunctionTriggerUrl"], new StringContent(bloburi.ToString()));
+            var stringTask = await client.PostAsync(configuration["FunctionTriggerUrl"], new StringContent(bloburi.ToString()));
 
             return this.mapper.Map<BatchDTO>(resp);
         }
