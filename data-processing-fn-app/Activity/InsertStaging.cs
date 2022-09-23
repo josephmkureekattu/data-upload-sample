@@ -18,7 +18,7 @@ namespace data_processing_fn_app.Activity
             
         public InsertStaging(IRepository<StagingTable> repository)
         {
-            repository = repository;
+            this.repository = repository;
         }
 
         [FunctionName("Insert_Staging")]
@@ -32,8 +32,8 @@ namespace data_processing_fn_app.Activity
                     data.Add(new StagingTable { Company = parsedYearDatacs.Company, Year = yearData.Key, Value = yearData.Value });
                 }
             }
-            await repository.AddRangeAsync(data);
-            await repository.SaveChangesAsync();
+            await this.repository.AddRangeAsync(data);
+            await this.repository.SaveChangesAsync();
             return true;
         }
     }
