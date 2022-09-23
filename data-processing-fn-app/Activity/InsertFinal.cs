@@ -29,7 +29,7 @@ namespace data_processing_fn_app.Activity
         {
             var command = "[dbo].[SP_Final_Insert]";
             appDbContext.Database.SetCommandTimeout(1800);//need more time than usual to execute calculation procedures.
-            appDbContext.Set<FinalTable>().FromSqlRaw($"EXEC {command}");
+            await appDbContext.Database.ExecuteSqlRawAsync($"EXEC {command}");
             return true;
         }
     }
